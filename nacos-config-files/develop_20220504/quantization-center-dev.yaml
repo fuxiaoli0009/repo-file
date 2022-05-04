@@ -1,0 +1,21 @@
+server:
+  port: 38270
+  logging:
+  level:
+    org:
+      springframework:
+        web: info
+    root: debug
+spring:
+  data:
+    mongodb:
+      uri: mongodb://q_root:Sheng@101.43.110.173:32270/quantization_2022
+rocketmq:
+  name-server: 101.43.110.173:31170
+  producer:
+    group: center-producer-group
+  send-msg-timeout: 5000
+  retry-times-when-send-failed: 2
+  max-message-size: 4194304
+  topic: quantization-topic
+  tag: orderly
