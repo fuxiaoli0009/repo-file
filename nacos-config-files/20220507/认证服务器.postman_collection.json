@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "ad2aefa5-a8d1-4f46-93c6-341acff9e0c1",
+		"name": "认证服务器",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1、获取授权码",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:39270/auth/oauth/authorize?client_id=clientfuxiaoli&response_type=code",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "39270",
+					"path": [
+						"auth",
+						"oauth",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "clientfuxiaoli"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2、获取令牌",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "front2022",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "front",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "bMghCj",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:39270/auth/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "39270",
+					"path": [
+						"auth",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2、通过网关获取令牌",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "auth2022",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "bdy5tx",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:38370/auth/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38370",
+					"path": [
+						"auth",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2、生产-获取令牌",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "front2022",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "front",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "EbjtwP",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://101.43.110.173:39270/auth/oauth/token",
+					"protocol": "http",
+					"host": [
+						"101",
+						"43",
+						"110",
+						"173"
+					],
+					"port": "39270",
+					"path": [
+						"auth",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3、通过刷新令牌获取新令牌",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "front2022",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "front",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicXVhbnRpemF0aW9uIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsiYWxsIiwiUFJPRFVDVF9BUEkiXSwiYXRpIjoiOTU2MjkyYmMtNGNmYi00YzNiLTlkMWYtNDE5OTYxZmM1ZDUwIiwiZXhwIjoxNjU0MjQ0OTU0LCJhdXRob3JpdGllcyI6WyJzeXM6dXNlcjpsaXN0Iiwic3lzOm1hbmFnZSIsInN5czp1c2VyIiwic3lzOnBlcm1pc3Npb246YWRkIiwic3lzOmluZGV4Iiwic3lzOnVzZXI6YWRkIiwic3lzOnBlcm1pc3Npb246ZWRpdCIsInN5czpyb2xlOmVkaXQiLCJzeXM6cGVybWlzc2lvbiIsInN5czp1c2VyOmVkaXQiLCJzeXM6dXNlcjpkZWxldGUiLCJzeXM6cm9sZTpkZWxldGUiLCJzeXM6cm9sZTpsaXN0Iiwic3lzOnBlcm1pc3Npb246ZGVsZXRlIiwic3lzOnBlcm1pc3Npb246bGlzdCIsInN5czpyb2xlIiwic3lzOnJvbGU6YWRkIl0sImp0aSI6IjA5YjgxNWVlLTJmN2YtNDQzZi1iNTM4LWVjNDhmMzFhMGRkNSIsImNsaWVudF9pZCI6ImZyb250In0.Bsgi3sycZmIqj8GT3LlTLiFpqNiVHekXasriSKfFclmZ89ap1lqAkc2PheAjSWDXa27LeCaFx1PXgs1XSbbpRy3aQBRTMaIP7YFuB7oJzf4b1cvBNJ9mN3EQaxtO5ce38gDDvsI2aWzEAj3gBGhA5uzeHWMBo447HT5ywyjbnMYuPq8TmH-1fvem91DRDjlBLHwWoQrs0JOOrK8rQlWHpaV3F6oEyFLpt8BdX83mipk3UGUq2vC23o2mzigNQKIxB5H95nopdgndg67s-LGynIW3LhJo1FwBlE0qJMDWN3hJgVbnfOSI67KFVz_fo9B-ZJxyznDhdFhsSht8QvolsA",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:39270/auth/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "39270",
+					"path": [
+						"auth",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3、生产-通过刷新令牌获取新令牌",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "front2022",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "front",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "b41aa883-99e8-4fac-927b-f03a07d7d834",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://101.43.110.173:39270/auth/oauth/token",
+					"protocol": "http",
+					"host": [
+						"101",
+						"43",
+						"110",
+						"173"
+					],
+					"port": "39270",
+					"path": [
+						"auth",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4、验证令牌有效性",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "front2022",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "front",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicXVhbnRpemF0aW9uIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsiYWxsIiwiUFJPRFVDVF9BUEkiXSwiZXhwIjoxNjUxODk3ODI5LCJhdXRob3JpdGllcyI6WyJzeXM6dXNlcjpsaXN0Iiwic3lzOm1hbmFnZSIsInN5czp1c2VyIiwic3lzOnBlcm1pc3Npb246YWRkIiwic3lzOmluZGV4Iiwic3lzOnVzZXI6YWRkIiwic3lzOnBlcm1pc3Npb246ZWRpdCIsInN5czpyb2xlOmVkaXQiLCJzeXM6cGVybWlzc2lvbiIsInN5czp1c2VyOmVkaXQiLCJzeXM6dXNlcjpkZWxldGUiLCJzeXM6cm9sZTpkZWxldGUiLCJzeXM6cm9sZTpsaXN0Iiwic3lzOnBlcm1pc3Npb246ZGVsZXRlIiwic3lzOnBlcm1pc3Npb246bGlzdCIsInN5czpyb2xlIiwic3lzOnJvbGU6YWRkIl0sImp0aSI6ImQ0ZDc1YjgzLTIyYTMtNDhiOC1hM2JlLWU1YjE2YTRmY2EzNSIsImNsaWVudF9pZCI6ImZyb250In0.D8cT-JPH7EVyG9aEHC6ctQlaeLb3JgVzZDGu-f_NvDFezGdWxU0R-85JftEt-QWgBc0UVlBFAFlo8n1khvDlxeJqvdLLIEApsZlPNFVvO-6y1_M7HWGOuN8b_1HLzxJYQdiZtDdXLQUIF0SnFek4NTPXtHtnvEabf-4tnPUqxLIpe_8PVd3-N0KWKJVHOjGICBmmQ_qbPVpC5m_0WFFMXrPdcAYuGq2COXM1PotgXTXW-WjGf8-cb0aJiDo1zXzrc-rxbF23k7cYsH2GoQXMX-oMUVXDHyQBQdJHG5Iid1JtOCC69RpJIFFSiAY4VU0SPXPg60QLzXWTNCvvMM05Fw",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:39270/auth/oauth/check_token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "39270",
+					"path": [
+						"auth",
+						"oauth",
+						"check_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4、通过网关验证令牌有效性",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "auth2022",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicXVhbnRpemF0aW9uIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsiYWxsIiwiUFJPRFVDVF9BUEkiXSwiZXhwIjoxNjUxODk5ODA3LCJhdXRob3JpdGllcyI6WyJzeXM6dXNlcjpsaXN0Iiwic3lzOm1hbmFnZSIsInN5czp1c2VyIiwic3lzOnBlcm1pc3Npb246YWRkIiwic3lzOmluZGV4Iiwic3lzOnVzZXI6YWRkIiwic3lzOnBlcm1pc3Npb246ZWRpdCIsInN5czpyb2xlOmVkaXQiLCJzeXM6cGVybWlzc2lvbiIsInN5czp1c2VyOmVkaXQiLCJzeXM6dXNlcjpkZWxldGUiLCJzeXM6cm9sZTpkZWxldGUiLCJzeXM6cm9sZTpsaXN0Iiwic3lzOnBlcm1pc3Npb246ZGVsZXRlIiwic3lzOnBlcm1pc3Npb246bGlzdCIsInN5czpyb2xlIiwic3lzOnJvbGU6YWRkIl0sImp0aSI6ImUyZDQ1N2MyLWViZDMtNGJhYy04YmY4LTU5MmI2NzAzOTE1MSIsImNsaWVudF9pZCI6ImF1dGgifQ.ROLXBbddzdwNnUqC9Gq15mnscKcH6BAi5mLm69YAJNBrvSFlgymk8bXQReAxVxIHrjjgeKDFgIK4Z_HrIOIdp9CqVHkrFOzwOwsRjlTQo-hr5ZIz-DMNVlZ8C443uECyTI_7oBJ7fNHddXmNxB6MeK-_51bITxwWsyJutXO-YDUwL2BtJoW4KUvw6Ff6MAnxgmWcezl0vXm7xDqocTa-_t0pLMFgyrL-9zuAIAQNkeV4kMtVM3F-xk6P5rlFfrFHBXeDKkr27v1069TeYqmk5D-W50rdQimGjq9nSgUNDpgm66l-PvSDyk7SSkmmjxlQy94eQbdIfywfW3xTir9UEQ",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:38370/auth/oauth/check_token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38370",
+					"path": [
+						"auth",
+						"oauth",
+						"check_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5、front-带令牌访问资源服务器",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicXVhbnRpemF0aW9uIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsiYWxsIiwiUFJPRFVDVF9BUEkiXSwiZXhwIjoxNjUxNzAzMDM4LCJhdXRob3JpdGllcyI6WyJzeXM6dXNlcjpsaXN0Iiwic3lzOm1hbmFnZSIsInN5czp1c2VyIiwic3lzOnBlcm1pc3Npb246YWRkIiwic3lzOmluZGV4Iiwic3lzOnVzZXI6YWRkIiwic3lzOnBlcm1pc3Npb246ZWRpdCIsInN5czpyb2xlOmVkaXQiLCJzeXM6cGVybWlzc2lvbiIsInN5czp1c2VyOmVkaXQiLCJzeXM6dXNlcjpkZWxldGUiLCJzeXM6cm9sZTpkZWxldGUiLCJzeXM6cm9sZTpsaXN0Iiwic3lzOnBlcm1pc3Npb246ZGVsZXRlIiwic3lzOnBlcm1pc3Npb246bGlzdCIsInN5czpyb2xlIiwic3lzOnJvbGU6YWRkIl0sImp0aSI6ImFlZjk3MjI4LWM5ZDgtNDkzMi1iZjgzLWRkMDhiOGRjOWUwZiIsImNsaWVudF9pZCI6ImZyb250In0.KUerBZVke-BkjWWK8kLGllE1UE7BXwUZL9vIW4DmCA4zlwqjxeAO1YjR7AmpESX9cu2SFAh9zjmYubknKKV_Mnfd7tFiafx34R1o1WslCYam4_LlK90VIypvz6kloJX8h39SPJqDebOsuidr_R_wjPRUSV0JtP4FyZfOv1FEm3rMYSchzQxpiOkHyWjyjQb_jFVw77IICkHJJXRYEtfDzDw6Kpfn1elO0WOSzMO0Fa4f_2F5cNodguwJ24Klse9SfLxeidbikiLbX8sH5W9O2XArHw17nKyJVE0S-bqIyL93HFAHXtcZvyj0ijosZF5HI5fyL9J1dASW4olO6i-GSw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:39370/quantization/choose/selectQuantizations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "39370",
+					"path": [
+						"quantization",
+						"choose",
+						"selectQuantizations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6、center-带令牌访问资源服务器",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicXVhbnRpemF0aW9uIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsiYWxsIiwiUFJPRFVDVF9BUEkiXSwiZXhwIjoxNjUxNzAzMTA0LCJhdXRob3JpdGllcyI6WyJzeXM6dXNlcjpsaXN0Iiwic3lzOm1hbmFnZSIsInN5czp1c2VyIiwic3lzOnBlcm1pc3Npb246YWRkIiwic3lzOmluZGV4Iiwic3lzOnVzZXI6YWRkIiwic3lzOnBlcm1pc3Npb246ZWRpdCIsInN5czpyb2xlOmVkaXQiLCJzeXM6cGVybWlzc2lvbiIsInN5czp1c2VyOmVkaXQiLCJzeXM6dXNlcjpkZWxldGUiLCJzeXM6cm9sZTpkZWxldGUiLCJzeXM6cm9sZTpsaXN0Iiwic3lzOnBlcm1pc3Npb246ZGVsZXRlIiwic3lzOnBlcm1pc3Npb246bGlzdCIsInN5czpyb2xlIiwic3lzOnJvbGU6YWRkIl0sImp0aSI6ImRlYzFhODFmLTFjYzUtNDg0Ny04ZWZhLWI2OTk3MDU3Yzg0ZCIsImNsaWVudF9pZCI6ImNlbnRlciJ9.OrX0IE_hLQvFkCiK9iKB2ou7kuOahDm-J__QAavWWsa6l4oLEY4l5-MAQS6mQfvIlivuyJWv-6BSHneKEx_QdcHdTbtveD23I3D-DLs6z_7nQF64cGVR8N1Jkp3_UA674LPkYfugA_vjxDemlp1NhTbTRNkLTEv2YR2Cf5a850CWuCJINH-c8keyRPTZozSn6d5RpN1P5vfk_q-m5WC7KtevRcGIVfrAZJ_PL7NRRuOewqYS1w_jp2Ismti1Q68g3_BunktfFwzQJkGQgdV1WBcBvtvtZgeI8MjPgglckLPGmKB7D2-DKTON2kANVzb962amOaRXgskYdwA_kLorxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:38270/center/product/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38270",
+					"path": [
+						"center",
+						"product",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7、通过网关访问front",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicXVhbnRpemF0aW9uIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsiYWxsIiwiUFJPRFVDVF9BUEkiXSwiZXhwIjoxNjUxODk5ODA3LCJhdXRob3JpdGllcyI6WyJzeXM6dXNlcjpsaXN0Iiwic3lzOm1hbmFnZSIsInN5czp1c2VyIiwic3lzOnBlcm1pc3Npb246YWRkIiwic3lzOmluZGV4Iiwic3lzOnVzZXI6YWRkIiwic3lzOnBlcm1pc3Npb246ZWRpdCIsInN5czpyb2xlOmVkaXQiLCJzeXM6cGVybWlzc2lvbiIsInN5czp1c2VyOmVkaXQiLCJzeXM6dXNlcjpkZWxldGUiLCJzeXM6cm9sZTpkZWxldGUiLCJzeXM6cm9sZTpsaXN0Iiwic3lzOnBlcm1pc3Npb246ZGVsZXRlIiwic3lzOnBlcm1pc3Npb246bGlzdCIsInN5czpyb2xlIiwic3lzOnJvbGU6YWRkIl0sImp0aSI6ImUyZDQ1N2MyLWViZDMtNGJhYy04YmY4LTU5MmI2NzAzOTE1MSIsImNsaWVudF9pZCI6ImF1dGgifQ.ROLXBbddzdwNnUqC9Gq15mnscKcH6BAi5mLm69YAJNBrvSFlgymk8bXQReAxVxIHrjjgeKDFgIK4Z_HrIOIdp9CqVHkrFOzwOwsRjlTQo-hr5ZIz-DMNVlZ8C443uECyTI_7oBJ7fNHddXmNxB6MeK-_51bITxwWsyJutXO-YDUwL2BtJoW4KUvw6Ff6MAnxgmWcezl0vXm7xDqocTa-_t0pLMFgyrL-9zuAIAQNkeV4kMtVM3F-xk6P5rlFfrFHBXeDKkr27v1069TeYqmk5D-W50rdQimGjq9nSgUNDpgm66l-PvSDyk7SSkmmjxlQy94eQbdIfywfW3xTir9UEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:38370/quantization/choose/selectQuantizationsByClassify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38370",
+					"path": [
+						"quantization",
+						"choose",
+						"selectQuantizationsByClassify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7、通过网关访问center",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicXVhbnRpemF0aW9uIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsiYWxsIiwiUFJPRFVDVF9BUEkiXSwiZXhwIjoxNjUxNzA3NjY3LCJhdXRob3JpdGllcyI6WyJzeXM6dXNlcjpsaXN0Iiwic3lzOm1hbmFnZSIsInN5czp1c2VyIiwic3lzOnBlcm1pc3Npb246YWRkIiwic3lzOmluZGV4Iiwic3lzOnVzZXI6YWRkIiwic3lzOnBlcm1pc3Npb246ZWRpdCIsInN5czpyb2xlOmVkaXQiLCJzeXM6cGVybWlzc2lvbiIsInN5czp1c2VyOmVkaXQiLCJzeXM6dXNlcjpkZWxldGUiLCJzeXM6cm9sZTpkZWxldGUiLCJzeXM6cm9sZTpsaXN0Iiwic3lzOnBlcm1pc3Npb246ZGVsZXRlIiwic3lzOnBlcm1pc3Npb246bGlzdCIsInN5czpyb2xlIiwic3lzOnJvbGU6YWRkIl0sImp0aSI6ImQ0M2IwMGZlLTVjN2QtNDRmZC04NzEwLTMwNDM4MTY3M2FiOCIsImNsaWVudF9pZCI6ImF1dGgifQ.Gtb-kup4yQbgsjl_cspKGdJ2qVbPLXB5EFchdFW5lFLSDisFWudv_4cXCCUIVWAZmXmmbfsfIgBPa3oicvLw9p4xpW7gBItFTIo-RS6bLPxwLMIyIWcsTN92LemLmAB-rE5hY5Kx97ZLMHsLjwJMlrvuuK3Qtjjlj5lMWNU7hpRB3sK4wNQAe2bTkUC43pWzdPaV8EddzbBJyp3dguXh4x4I9hDyVXuiy4XmP2L55Xr8eoi244n_cuKaYhJ-cKiAnOOZpRaJ1YsY8FRZzstarCQ8qfh0HrqWuEqb1XN6T1uJ6NnWMYDZrIgCMdKr5R9zvQ5Jn5CTuMG9zAnhuSHTEA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:38370/center/product/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38370",
+					"path": [
+						"center",
+						"product",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
