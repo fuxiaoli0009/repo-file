@@ -1,0 +1,65 @@
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    com.personal.quantization.center.api.QuantizationCenterClient: debug
+    com.personal.quantization.mapper: debug
+server:
+  port: 39370
+spring:
+  application:
+    name: quantization-front
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://101.43.110.173:30370/quantization_2022?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: Shenghuo@2022
+  jpa:
+    show-sql: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+  data:
+    mongodb:
+      uri: mongodb://q_root:Sheng@101.43.110.173:32270/quantization_2022
+  redis:
+    host: 101.43.110.173
+    port: 33370
+    password: 
+    timeout: 6000
+    lettuce:
+      pool:
+        max-wait: 60000
+        max-active: 10
+        max-idle: 5
+        min-idle: 0
+
+logstash: 
+  destination: 101.43.110.173:37370
+REMOTE:
+  URL: 
+    SINA: http://hq.sinajs.cn/list=
+    TENCENT: http://qt.gtimg.cn/r=0q=
+mybatis:
+  type-aliases-package: com.personal.quantization.model
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    
+custom:
+  rest:
+    template:
+      connect-timeout: 5000
+      read-timeout: 5000
+feign:
+  client:
+    config:
+      quantization-center:
+        logerLevel: FULL
+      default:
+        connectTimeout: 50000
+        readTimeout: 100000
+rocketmq:
+  name-server: 101.43.110.173:31170
+  consumer:
+    group: quantization-front-group
+    

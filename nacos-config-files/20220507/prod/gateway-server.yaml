@@ -1,0 +1,30 @@
+server:
+  port: 38370
+logging:
+  config: classpath:logback-spring.xml
+spring:
+  application:
+    name: gateway-server
+  main: 
+    allow-bean-definition-overriding: true
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 101.43.110.173:30270
+        clientIp: 101.43.110.173
+  sentinel:
+    eager: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://101.43.110.173:30370/quantization_2022?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: Shenghuo@2022
+  jpa:
+    show-sql: true
+logstash: 
+  destination: 101.43.110.173:37370
+mybatis:
+  type-aliases-package: com.personal.quantization.model
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
